@@ -1,8 +1,8 @@
 import './globals.css'
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
 
-const inter = Inter({ subsets: ['latin'] })
+// Remove this line if not using the font
+// import { Inter } from 'next/font/google'
 
 export const metadata: Metadata = {
   title: 'ProjectHopper',

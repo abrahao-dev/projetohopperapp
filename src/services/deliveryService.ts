@@ -1,5 +1,5 @@
    // Fetch deliveries for a user
-   async function fetchUserDeliveries(userId: string) {
+   export async function fetchUserDeliveries(userId: string) {
     const { data, error } = await supabase
       .from('deliveries')
       .select('*')
@@ -11,7 +11,7 @@
   }
 
   // Create a new delivery
-  async function createDelivery(deliveryData: DeliveryData) {
+  export async function createDelivery(deliveryData: DeliveryData) {
     const { data, error } = await supabase
       .from('deliveries')
       .insert([deliveryData])

@@ -5,9 +5,9 @@ import { motion } from 'framer-motion';
 import { Button } from '../../components/ui/button';
 import { Card, CardHeader, CardTitle, CardContent } from '../../components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../../components/ui/tabs';
-import { supabase } from '../../../lib/supabase';
+import { supabase } from '/lib/supabase';
 import { useRouter } from 'next/navigation';
-import { GoogleMap, LoadScript, Marker, LoadScriptProps } from '@react-google-maps/api';
+import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
 
 interface MapContainerStyleProps {
   width: string;
@@ -33,7 +33,7 @@ const destination = {
 
 export default function Dashboard() {
   const [deliveryToken, setDeliveryToken] = useState('');
-  const [user, setUser] = useState<any>(null);
+  const [user, setUser] = useState<{ id: string } | null>(null);
   const [mapError, setMapError] = useState<string | null>(null);
   const router = useRouter();
 
