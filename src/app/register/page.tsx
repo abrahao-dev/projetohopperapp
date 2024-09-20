@@ -2,27 +2,33 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { motion } from 'framer-motion'
+import { supabase } from '../../../lib/supabase.ts'  // Make sure this path is correct
 import Link from 'next/link'
-import { supabase } from '../../../lib/supabase.ts'  // Adjust this path if necessary
+import { motion } from 'framer-motion'
 
-export default function Login() {
+export default function RegisterPage() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
   const router = useRouter()
 
-  const handleLogin = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setError('')
     try {
-      const { data, error } = await supabase.auth.signInWithPassword({ email, password })
+      const { data, error } = await supabase.auth.signUp({
+        email,
+        password,
+      })
+
       if (error) throw error
-      console.log('Login successful:', data)
-      router.push('/dashboard')
+
+      console.log('User registered successfully:', data)
+      alert('Cadastro realizado com sucesso! Por favor, verifique seu e-mail para confirmar a conta.')
+      router.push('/login')
     } catch (error) {
-      console.error('Login error:', error)
-      setError('Credenciais inválidas. Por favor, tente novamente.')
+      setError('Falha no cadastro. Por favor, tente novamente.')
+      console.error('Falha no cadastro:', error)
     }
   }
 
@@ -35,31 +41,29 @@ export default function Login() {
         className="bg-white bg-opacity-10 p-8 rounded-2xl shadow-2xl backdrop-blur-md w-full max-w-md"
       >
         <h2 className="text-3xl font-bold mb-6 text-center text-white">
-          Entrar no <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500">ProjetoHopper</span>
+          Cadastro <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500">ProjetoHopper</span>
         </h2>
         {error && <p className="text-red-500 text-center mb-4">{error}</p>}
-        <form onSubmit={handleLogin} className="space-y-6">
+        <form onSubmit={handleSubmit} className="space-y-6">
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-200 mb-1">E-mail</label>
+            <label htmlFor="email" className="block text-sm font-medium text-gray-200 mb-1">Registre seu melhor email</label>
             <input
               id="email"
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               className="w-full px-3 py-2 bg-white bg-opacity-20 border border-gray-300 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
-              placeholder="seu@email.com"
               required
             />
           </div>
           <div>
-            <label htmlFor="password" className="block text-sm font-medium text-gray-200 mb-1">Senha</label>
+            <label htmlFor="password" className="block text-sm font-medium text-gray-200 mb-1">Registre uma senha forte</label>
             <input
               id="password"
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               className="w-full px-3 py-2 bg-white bg-opacity-20 border border-gray-300 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
-              placeholder="••••••••"
               required
             />
           </div>
@@ -69,7 +73,7 @@ export default function Login() {
             type="submit"
             className="w-full bg-gradient-to-r from-yellow-400 to-orange-500 text-white font-bold py-2 px-4 rounded-md hover:opacity-90 transition duration-300"
           >
-            Entrar
+            Cadastrar
           </motion.button>
         </form>
       </motion.div>
@@ -79,7 +83,7 @@ export default function Login() {
         transition={{ delay: 0.5, duration: 0.8 }}
         className="mt-8 text-sm text-gray-300"
       >
-        Não tem uma conta? <Link href="/register" className="text-yellow-400 hover:text-yellow-300">Cadastre-se</Link>
+        Já tem uma conta? <Link href="/login" className="text-yellow-400 hover:text-yellow-300">Entrar</Link>
       </motion.p>
     </div>
   )
