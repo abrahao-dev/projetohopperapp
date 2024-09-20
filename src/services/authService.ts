@@ -1,4 +1,4 @@
-import { supabase } from '../../lib/supabase'  // adjust the path as necessary
+import { supabase } from '@/lib/supabase'  // adjust the path as necessary
 
 export async function signUpUser(email: string, password: string) {
   const { data, error } = await supabase.auth.signUp({
