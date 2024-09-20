@@ -1,36 +1,76 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ProjectHopper
+
+ProjectHopper is an Autonomous Van Delivery Management System designed to streamline and optimize the process of managing deliveries for autonomous vehicles.
+
+## Purpose
+
+The main purpose of ProjectHopper is to provide a user-friendly interface for tracking and managing autonomous van deliveries. It aims to:
+
+1. Improve efficiency in delivery logistics
+2. Provide real-time tracking of deliveries
+3. Enhance customer satisfaction through timely and accurate delivery information
+4. Optimize route planning for autonomous vehicles
+5. Offer a seamless experience for both delivery managers and end customers
+
+## Features
+
+- User authentication and authorization
+- Dashboard for tracking deliveries in various states (waiting, in route, delivered)
+- Generation of unique delivery tokens
+- Real-time updates on delivery status
+- Light and dark mode toggle for improved user experience
+- Responsive design for both desktop and mobile devices
+
+## Technologies Used
+
+- Next.js
+- React
+- TypeScript
+- Tailwind CSS
+- Supabase (for backend and authentication)
 
 ## Getting Started
 
-First, run the development server:
+To run ProjectHopper on your local machine, follow these steps:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+1. **Clone the repository**
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+   ```
+   git clone https://github.com/abrahao-dev/projetohopperapp.git
+   cd projetohopperapp
+   ```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+2. **Install dependencies**
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+   ```
+   npm install
+   ```
 
-## Learn More
+3. **Set up environment variables**
 
-To learn more about Next.js, take a look at the following resources:
+   Create a `.env.local` file in the root directory and add the following variables:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+   ```
+   NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
+   NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+   Replace `your_supabase_project_url` and `your_supabase_anon_key` with your actual Supabase project credentials.
 
-## Deploy on Vercel
+4. **Run the development server**
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+   ```
+   npm run dev
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+5. **Open the application**
+
+   Open your browser and navigate to `http://localhost:3000`
+
+## Contributing
+
+Contributions to ProjectHopper are welcome! Please feel free to submit a Pull Request.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
